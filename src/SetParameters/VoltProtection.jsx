@@ -57,6 +57,8 @@ export default function VoltProtection() {
         }
       }
     }
+    json["email"] = "test@gmail.com";
+    json["password"] = "admin";
     // console.log(json);
     sendData(json)
   }

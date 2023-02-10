@@ -65,6 +65,8 @@ export default function BattCharacteristics() {
         }
       }
     }
+    json["email"] = "test@gmail.com";
+    json["password"] = "admin";
     // console.log(json['bom']);
     json["bom"] = json["bom"] == 'on' ? 1 : 0;
     // let date = new Date(json["bpd"]);

@@ -52,6 +52,8 @@ export default function CurrProtection() {
         }
       }
     }
+    json["email"] = "test@gmail.com";
+    json["password"] = "admin";
     // console.log(json);
     sendData(json)
   }

@@ -56,6 +56,8 @@ export default function TempProtection() {
         }
       }
     }
+    json["email"] = "test@gmail.com";
+    json["password"] = "admin";
     // console.log(json);
     sendData(json)
   }
