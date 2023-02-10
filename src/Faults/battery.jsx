@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import Axios from "axios";
 import { Outlet, Link, useLocation } from "react-router-dom";
-import "./style.css";
-import Sidebar from "./sidebar";
-import Navbar from "./navbar";
+import Navbar from "../components/navbar";
 
 export const Battery = () => {
   const loc = useLocation();
@@ -24,7 +22,6 @@ export const Battery = () => {
   };
   return (
     <div className="page">
-      <Sidebar />
       <div className="home">
         <Navbar />
         <div className="container">

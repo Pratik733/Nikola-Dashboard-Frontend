@@ -1,32 +1,93 @@
+import './App.css';
+import { Toaster } from "react-hot-toast";
+import { useContext, useEffect } from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Battery } from "./components/battery";
-import { Battery2 } from "./components/battery2";
-import { BatteryAnalysis } from "./components/batteryAnalysis";
+import { BrowserRouter, Routes, Route, useLocation, useNavigate, Navigate } from "react-router-dom";
+import { AuthContext } from "./authContext";
+import { Battery } from "./Faults/battery";
+import { BatteryAnalysis } from "./BatteryaAnalysis/BatteryAnalysis";
 import { Cell } from "./components/cell";
 import { Cellinfo } from "./components/cellinfo";
-import { FaultDetection } from "./components/faultDet";
-import { Indexdash } from "./components/indexdash";
-import Login from "./pages/login";
-import Signup from "./pages/signup";
-import Signupd from "./components/signup copy";
+import { FaultDetection } from "./Faults/faultDet";
+import { Indexdash } from "./Landing/indexdash";
+import Login from "./LoginSignup/login";
+import Signup from "./LoginSignup/signup";
+import BatteryFaults from "./Faults/BatteryFaults";
+import { SensorFaults } from "./Faults/SensorFaults";
+import ActuatorFaults from "./Faults/ActuatorFaults";
+import FaultDetails from "./Faults/FaultDetails";
+import InternalShortCircuit from "./Faults/InternalShortCircuit";
+import Sidebar from "./Sidebar/sidebar";
+import BattCharacteristics from './SetParameters/BattCharacteristics';
+import CurrProtection from './SetParameters/CurrProtection';
+import TempProtection from './SetParameters/TempProtection';
+import VoltProtection from './SetParameters/VoltProtection';
+import SetParameters from './SetParameters/SetParameters';
 
 function App() {
+  const { currentUser } = useContext(AuthContext);
+  const history = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    if (!currentUser && (location.pathname !== "/signup")) {
+      history("/login");
+    }
+  }, [currentUser, history]);
+
+
   return (
-    <BrowserRouter>
-      <Routes>
+    <div className='flex h-auto flex-row justify-flex-end'>
+      <Toaster />
+
+      {location.pathname !== '/login' && location.pathname !== '/signup' ? <Sidebar /> : null}
+      <Routes >
+
+        {/*       Landing Page                 */}
+
         <Route path="/" element={<Indexdash />} />
-        <Route path="signup" element={<Signup />} />
-        <Route path="signupd" element={<Signupd />} />
-        <Route path="login" element={<Login />} />
+
+        {/*        Login & Sign-up Pages       */}
+
+        <Route
+          path="/signup"
+          element={currentUser ? <Navigate to="/" /> : <Signup />}
+        />
+        <Route
+          path="/login"
+          element={currentUser ? <Navigate to="/" /> : <Login />}
+        />
+
+        {/*         Falut Detection Pages      */}
+
         <Route path="fault-detection" element={<FaultDetection />} />
-        <Route path="battery" element={<Battery />} />
-        <Route path="battery-analysis" element={<BatteryAnalysis />} />
-        <Route path="battery2" element={<Battery2 />} />
+
+        <Route path='/battery-faults' element={<BatteryFaults />} />
+        <Route path='/sensor-faults' element={<SensorFaults />} />
+        <Route path='/actuator-faults' element={<ActuatorFaults />} />
+        <Route path='/fault-details/:type' element={<FaultDetails />} />
+        <Route path='/battery-faults/internal-short-circuits' element={<InternalShortCircuit />} />
+
+        {/*         Battery Analysis           */}
+
+        <Route path="/battery-analysis/:battid" element={<BatteryAnalysis />} />
+
+        {/*               Cell Info           */}
+
         <Route path="cell-info" element={<Cellinfo />} />
         <Route path="cell" element={<Cell />} />
+
+        {/*           Set Parameters          */}
+
+        <Route path='/set-parameters' element={<SetParameters />} />
+        <Route path='/Battery-Characteristics/:id' element={<BattCharacteristics />} />
+        <Route path='/Current-Protection/:id' element={<CurrProtection />} />
+        <Route path='/Temperature-Protection/:id' element={<TempProtection />} />
+        <Route path='/Voltage-Protection/:id' element={<VoltProtection />} />
+
+        {/* <Route path="battery" element={<Battery />} /> */}
       </Routes>
-    </BrowserRouter>
+    </div>
   );
 }
 

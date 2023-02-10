@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Axios from "axios";
 import { Outlet, Link, useLocation } from "react-router-dom";
 import { UserData } from "./data";
-import "./style.css";
 import BarChart from "./barchart";
 import LineChart from "./linechart";
 import PieChart from "./piechart";

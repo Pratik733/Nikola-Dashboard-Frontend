@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Axios from "axios";
 import { Outlet, Link, useLocation } from "react-router-dom";
-import "./style.css";
 export const Cellinfo = () => {
   return (
     <>
