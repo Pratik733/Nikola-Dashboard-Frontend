@@ -6,7 +6,7 @@ import { useState } from "react";
 // no chart will be rendered.
 // website examples showcase many properties,
 // you'll often use just a few of them.
-export const Histogram = ({ data, toggle /* see data tab */ }) => {
+export default Histogram = ({ data, toggle /* see data tab */ }) => {
   const [expand, setExpand] = useState(false);
   const [hiddendata, setHiddendata] = useState("");
   function handleclick (data) {

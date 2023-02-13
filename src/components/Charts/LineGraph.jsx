@@ -1,7 +1,7 @@
 import React from 'react'
 import { ResponsiveLine } from '@nivo/line'
 
-export const MyResponsiveLine  = ({ data /* see data tab */ ,toggle}) => (
+export default MyResponsiveLine  = ({ data /* see data tab */ ,toggle}) => (
     <ResponsiveLine
         data={data}
         
