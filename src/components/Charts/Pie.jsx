@@ -7,7 +7,7 @@ import { ResponsivePie } from '@nivo/pie'
 // no chart will be rendered.
 // website examples showcase many properties,
 // you'll often use just a few of them.
-export default MyResponsivePie = ({ data /* see data tab */ , toggle}) => (
+export const MyResponsivePie = ({ data /* see data tab */ , toggle}) => (
     <ResponsivePie
         data={data}
         colors={["#ffcb11" , "#76bc6d"]}
