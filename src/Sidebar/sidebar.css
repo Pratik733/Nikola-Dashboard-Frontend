@@ -1,12 +1,15 @@
+.sidebar-wrapper{
+  width: 3.7rem;
+}
 .sidebar {
-  position: sticky;
+  position: fixed;
   /* width: 15vw; */
   border-right: 0.5px solid rgb(230, 227, 227);
   height: 100vh;
   background-color: white;
   /* width: 16rem; */
-  width: 3.7rem;
-  padding-left: 2px;
+  width: 3.4rem;
+  /* padding-left: 2px; */
 }
 
 .top {

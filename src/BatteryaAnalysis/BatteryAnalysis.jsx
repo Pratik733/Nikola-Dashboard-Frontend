@@ -15,7 +15,7 @@ export const BatteryAnalysis = () => {
 
   useEffect(() => {
     const getData = async () => {
-      const response = await fetch(`http://65.0.103.14/bat_info`, {
+      const response = await fetch(`http://65.1.92.103/`, {
         method: "GET",
       });
       const tempdata = await response.json();

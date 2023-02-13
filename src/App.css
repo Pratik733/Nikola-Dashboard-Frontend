@@ -260,3 +260,10 @@
   border-radius: 8px;
   align-self: flex-end;
 }
+
+.user-rows:nth-child(even) {
+  background-color: #ccc;
+}
+.user-rows:nth-child(od) {
+  background-color: #fff;
+}

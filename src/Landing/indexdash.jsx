@@ -16,7 +16,7 @@ import BoltIcon from "@mui/icons-material/Bolt";
 import EmojiTransportationIcon from "@mui/icons-material/EmojiTransportation";
 
 export const Indexdash = () => {
-  const [vid, setVid] = useState("");
+  const [vid, setVid] = useState(""); //V123456789
   const [vdata, setVdata] = useState([{}]);
   const [filteredData, setFilteredData] = useState();
   const [searchVal, setSearchVal] = useState('');
@@ -32,7 +32,7 @@ export const Indexdash = () => {
 
   const getData = async () => {
     try {
-      const response = await fetch('http://65.0.103.14/veh_info', {
+      const response = await fetch('	http://13.232.202.23/', {
         method: 'GET',
       });
       const data = await response.json();
@@ -254,7 +254,7 @@ export const Indexdash = () => {
                     />
                   </div>
                 </div>
-                <div className="widget">
+                {/* <div className="widget">
                   <div className="left">
                     <span className="title">Vehicle Usage Pattern</span>
                     <p className="num">{filteredData[0].Veh_Usg_Patter}</p>
@@ -267,7 +267,7 @@ export const Indexdash = () => {
                       }}
                     />
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
 
@@ -292,7 +292,9 @@ export const Indexdash = () => {
 
           </div>
         ) : (
-          <></>
+          <div>
+            <h1>No data availabe or server Error</h1>
+          </div>
         )
       }
     </div>

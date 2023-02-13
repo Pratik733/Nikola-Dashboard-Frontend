@@ -1,6 +1,7 @@
 import "./sidebar.css";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
+import VerifiedUserIcon from '@mui/icons-material/VerifiedUser';
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import CreditCardIcon from "@mui/icons-material/CreditCard";
 import StoreIcon from "@mui/icons-material/Store";
@@ -12,6 +13,7 @@ import SettingsSystemDaydreamOutlinedIcon from "@mui/icons-material/SettingsSyst
 import PsychologyOutlinedIcon from "@mui/icons-material/PsychologyOutlined";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import DisplaySettingsOutlinedIcon from '@mui/icons-material/DisplaySettingsOutlined';
+import PatternIcon from '@mui/icons-material/Pattern';
 import { Link, useNavigate } from "react-router-dom";
 // import { DarkModeContext } from "../../context/darkModeContext";
 import { useContext, useState } from "react";
@@ -26,13 +28,17 @@ const Sidebar = () => {
   const toggleSidebar = () => {
     if (mini) {
       console.log('opening sidebar');
-      document.getElementsByClassName('sidebar')[0].style.width = '20rem';
-      document.getElementsByClassName('sidebar')[0].style.padding = '0';
+      document.getElementsByClassName('sidebar')[0].style.width = '16.65%';
+      document.getElementsByClassName('sidebar-wrapper')[0].style.width = '20%';
+      document.getElementsByClassName('sidebar')[0].style.paddingLeft = '0';
+      document.getElementsByClassName('sidebar-wrapper')[0].style.paddingLeft = '0';
       setMini(false);
     } else {
       console.log('closing sidebar');
-      document.getElementsByClassName('sidebar')[0].style.width = '3.7rem';
+      document.getElementsByClassName('sidebar')[0].style.width = '3.4rem';
+      document.getElementsByClassName('sidebar-wrapper')[0].style.width = '3.7rem';
       document.getElementsByClassName('sidebar')[0].style.paddingLeft = '2px';
+      document.getElementsByClassName('sidebar-wrapper')[0].style.paddingLeft = '2px';
       setMini(true);
     }
   }
@@ -45,6 +51,7 @@ const Sidebar = () => {
 
   //   const { dispatch } = useContext(DarkModeContext);
   return (
+    <div className="sidebar-wrapper transition-all relative">
     <div className="sidebar transition-all truncate" onMouseEnter={toggleSidebar} onMouseLeave={toggleSidebar}>
       <div className="top">
         <Link to="/" className="w-full" style={{ textDecoration: "none" }}>
@@ -71,6 +78,12 @@ const Sidebar = () => {
               <span>Users</span>
             </li>
           </Link>
+          <Link to="/authorize-users" style={{ textDecoration: "none" }}>
+            <li >
+              <VerifiedUserIcon className="icon" style={{ width: 'auto', height: '2rem' }} />
+              <span>Set User Pemissions</span>
+            </li>
+          </Link>
           <Link to="/products" style={{ textDecoration: "none" }}>
             <li>
               <StoreIcon className="icon" style={{ width: 'auto', height: '2rem' }} />
@@ -86,6 +99,10 @@ const Sidebar = () => {
             <span>Delivery</span>
           </li> */}
           <p className="title">USEFUL</p>
+          <li>
+            <PatternIcon className="icon" style={{ width: 'auto', height: '2rem' }} />
+            <span>Vehicle Usage Pattern</span>
+          </li>
           <li>
             <InsertChartIcon className="icon" style={{ width: 'auto', height: '2rem' }} />
             <span>Stats</span>
@@ -134,6 +151,7 @@ const Sidebar = () => {
           onClick={() => dispatch({ type: "DARK" })}
         ></div>
       </div> */}
+    </div>
     </div>
   );
 };

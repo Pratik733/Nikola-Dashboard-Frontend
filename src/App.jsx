@@ -23,6 +23,9 @@ import CurrProtection from './SetParameters/CurrProtection';
 import TempProtection from './SetParameters/TempProtection';
 import VoltProtection from './SetParameters/VoltProtection';
 import SetParameters from './SetParameters/SetParameters';
+import AuthUser from './Admin/AuthUser';
+import CellInfo from './Cell-Info/Cell-info';
+import Cells from './Cell-Info/Cells';
 
 function App() {
   const { currentUser } = useContext(AuthContext);
@@ -41,6 +44,7 @@ function App() {
       <Toaster />
 
       {location.pathname !== '/login' && location.pathname !== '/signup' ? <Sidebar /> : null}
+      
       <Routes >
 
         {/*       Landing Page                 */}
@@ -58,6 +62,10 @@ function App() {
           element={currentUser ? <Navigate to="/" /> : <Login />}
         />
 
+        {/*              Admin                 */}
+
+        <Route path='/authorize-users' element={<AuthUser />} />
+
         {/*         Falut Detection Pages      */}
 
         <Route path="fault-detection" element={<FaultDetection />} />
@@ -74,8 +82,8 @@ function App() {
 
         {/*               Cell Info           */}
 
-        <Route path="cell-info" element={<Cellinfo />} />
-        <Route path="cell" element={<Cell />} />
+        <Route path="cell-info" element={<Cells />} />
+        <Route path="cell" element={<CellInfo />} />
 
         {/*           Set Parameters          */}
 
